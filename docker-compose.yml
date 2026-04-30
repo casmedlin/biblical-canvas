@@ -1,0 +1,84 @@
+# TrueNAS SCALE Custom App Configuration
+x-notes: |
+  ### Biblical Canvas
+  A tool for designing and sharing Bible verse images.
+  
+  **Setup Requirements:**
+  1. Create a dataset for uploads (e.g., `/mnt/tank/apps/biblical-canvas/uploads`).
+  2. Set permissions on that dataset to UID/GID `568` (apps).
+  3. Default Admin Password: `admin` (change via `ADMIN_PASSWORD` env var).
+
+x-portals:
+  - name: "Web UI"
+    protocol: "http"
+    host: "0.0.0.0"
+    port: 8286
+    path: "/"
+
+services:
+  biblical-canvas-frontend:
+    image: casmedlin/biblical-canvas-frontend:latest
+    container_name: biblical-canvas-frontend
+    restart: unless-stopped
+    user: "568:568"
+    ports:
+      - "8286:8080"
+    depends_on:
+      - biblical-canvas-backend
+    labels:
+      - "org.truenas.scale.app=true"
+    networks:
+      - biblical-net
+    security_opt:
+      - no-new-privileges=true
+    cap_drop:
+      - ALL
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+    # Healthcheck simplified to avoid lifecycle timeouts
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8080/ | grep -q 'html' || exit 1"]
+      interval: 60s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  biblical-canvas-backend:
+    image: casmedlin/biblical-canvas-backend:latest
+    container_name: biblical-canvas-backend
+    restart: unless-stopped
+    user: "568:568"
+    ports:
+      - "8287:8284"
+    volumes:
+      - "/mnt/tank/apps/biblical-canvas/uploads:/app/server/uploads"
+    environment:
+      - PORT=8284
+      - ADMIN_PASSWORD=admin
+      - TZ=America/Los_Angeles
+    labels:
+      - "org.truenas.scale.app=true"
+    networks:
+      - biblical-net
+    security_opt:
+      - no-new-privileges=true
+    cap_drop:
+      - ALL
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"require('http').get('http://127.0.0.1:8284/health', (res) => { if (res.statusCode === 200) process.exit(0); else process.exit(1); }).on('error', () => process.exit(1))\""]
+      interval: 60s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+networks:
+  biblical-net:
+    driver: bridge
+    labels:
+      tn.network.internal: "true"

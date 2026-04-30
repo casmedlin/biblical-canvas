@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin
+Disallow: /share/
+Disallow: /login
+Disallow: /list
+
+Sitemap: https://canvas.biblicalencouragement.org/sitemap.xml

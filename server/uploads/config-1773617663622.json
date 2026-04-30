@@ -1,0 +1,46 @@
+{
+  "timestamp": "2026-03-15T23:34:23.622Z",
+  "imagePath": "/Users/casmedlin/Programing/Biblical Canvas/server/uploads/design-1773617663606.png",
+  "config": {
+    "verse": "For I know the thoughts that I think toward you,” says Yahweh, “thoughts of peace, and not of evil, to give you hope and a future.",
+    "reference": "Jeremiah 29:11",
+    "versionLabel": "English Standard Version (ESV)",
+    "imageUrl": "https://images.pexels.com/photos/27060872/pexels-photo-27060872.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "fontFamily": "Playfair Display",
+    "verseFontSize": 2.5,
+    "referenceFontSize": 1.2,
+    "fontWeight": 700,
+    "lineHeight": 1.2,
+    "letterSpacing": 0,
+    "textRotation": 0,
+    "textShadow": 45,
+    "uppercaseText": false,
+    "textColor": "#ffffff",
+    "overlayOpacity": 0.4,
+    "textAlignment": "center",
+    "imageFit": "cover",
+    "imageZoom": 100,
+    "imagePositionX": 50,
+    "imagePositionY": 50,
+    "imageBrightness": 100,
+    "imageContrast": 100,
+    "imageSaturation": 100,
+    "imageBlur": 0,
+    "imageGrayscale": 0,
+    "canvasWidth": 1080,
+    "canvasHeight": 1920,
+    "verseBox": {
+      "x": 50,
+      "y": 46.82025028441411,
+      "width": 80
+    },
+    "referenceBox": {
+      "x": 50,
+      "y": 74,
+      "width": 60
+    },
+    "showQuotes": true,
+    "showReference": true,
+    "showVersion": false
+  }
+}

@@ -1,0 +1,19 @@
+
+> bible-verse-designer@0.0.0 dev
+> vite
+
+
+  VITE v7.3.1  ready in 1117 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+3:56:20 PM [vite] (client) hmr update /src/App.tsx
+3:56:31 PM [vite] (client) hmr update /src/App.tsx
+3:59:18 PM [vite] (client) hmr update /src/App.tsx
+3:59:21 PM [vite] (client) hmr update /src/App.tsx
+4:01:01 PM [vite] (client) hmr update /src/App.tsx
+4:01:05 PM [vite] (client) hmr update /src/App.tsx
+4:03:23 PM [vite] (client) hmr update /src/App.tsx
+4:06:38 PM [vite] (client) page reload public/privacy.html
+4:06:46 PM [vite] (client) page reload public/privacy.html
+4:06:54 PM [vite] (client) hmr update /src/App.tsx
